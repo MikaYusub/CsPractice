@@ -1,89 +1,91 @@
 ﻿using System;
-
-class XLinkedList
+namespace LL
 {
-    public class Item
+    class XLinkedList
     {
-        public int value;
-        public Item next;
-
-        public Item(int value)
+        public class Item
         {
-            this.value = value;
-        }
-    }
-    private Item head;
-    public Item GetHead()
-    {
-        return head;
-    }
+            public int value;
+            public Item next;
 
-    public void Add(int value)
-    {
-        Item item = new Item(value);
-        if (head == null)
-        {
-            head = item;
+            public Item(int value)
+            {
+                this.value = value;
+            }
         }
-        else
+        private Item head;
+        public Item GetHead()
+        {
+            return head;
+        }
+
+        public void Add(int value)
+        {
+            Item item = new Item(value);
+            if (head == null)
+            {
+                head = item;
+            }
+            else
+            {
+                Item current = head;
+                while (current.next != null)
+                {
+                    current = current.next;
+                }
+                current.next = item;
+            }
+        }
+
+        public Boolean Contains(int value)
         {
             Item current = head;
-            while (current.next != null)
+            while (current != null)
             {
+                if (current.value == value) return true;
                 current = current.next;
             }
-            current.next = item;
+            return false;
         }
-    }
 
-    public Boolean Contains(int value)
-    {
-        Item current = head;
-        while (current != null)
+        public void Remove(int value)
         {
-            if (current.value == value) return true;
-            current = current.next;
-        }
-        return false;
-    }
-
-    public void Remove(int value)
-    {
-        Item curr = head;
-        Item prev = null;
-        while (curr != null)
-        {
-            if (curr.value == value)
+            Item curr = head;
+            Item prev = null;
+            while (curr != null)
             {
-                if (prev == null)
+                if (curr.value == value)
                 {
-                    head = head.next;
+                    if (prev == null)
+                    {
+                        head = head.next;
+                        break;
+                    }
+                    prev.next = curr.next;
                     break;
                 }
-                prev.next = curr.next;
-                break;
+                prev = curr;
+                curr = curr.next;
             }
-            prev = curr;
-            curr = curr.next;
         }
-    }
 
-    class LinkedList
-    {
-        static void Main(string[] args)
+        class LinkedList
         {
-            XLinkedList ll = new XLinkedList();
-            ll.Add(11);
-            ll.Add(22);
-            ll.Add(33);
-            ll.Add(44);
-            ll.Remove(33);
-            bool found22 = ll.Contains(22);
-            bool found33 = ll.Contains(33);
-            bool found42 = ll.Contains(42);
-            Console.WriteLine(found22);//true
-            Console.WriteLine(found33);//false
-            Console.WriteLine(found42);//false
+            public static void Main1()
+            {
+                XLinkedList ll = new XLinkedList();
+                ll.Add(11);
+                ll.Add(22);
+                ll.Add(33);
+                ll.Add(44);
+                ll.Remove(33);
+                bool found22 = ll.Contains(22);
+                bool found33 = ll.Contains(33);
+                bool found42 = ll.Contains(42);
+                Console.WriteLine(found22);//true
+                Console.WriteLine(found33);//false
+                Console.WriteLine(found42);//false
+            }
         }
     }
 }
