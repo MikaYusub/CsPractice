@@ -70,7 +70,7 @@ namespace LinkedList
             }
         }
 
-        class Program
+        class LinkedList
         {
             static void Main(string[] args)
             {
@@ -83,9 +83,9 @@ namespace LinkedList
                 bool found22 = ll.Contains(22);
                 bool found33 = ll.Contains(33);
                 bool found42 = ll.Contains(42);
-                Console.WriteLine(found22);
-                Console.WriteLine(found33); 
-                Console.WriteLine(found42);
+                Console.WriteLine(found22);//true
+                Console.WriteLine(found33);//false
+                Console.WriteLine(found42);//false
             }
         }
     }
