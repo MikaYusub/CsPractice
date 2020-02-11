@@ -68,24 +68,5 @@ namespace LL
                 curr = curr.next;
             }
         }
-
-        class LinkedList
-        {
-            public static void Main1()
-            {
-                XLinkedList ll = new XLinkedList();
-                ll.Add(11);
-                ll.Add(22);
-                ll.Add(33);
-                ll.Add(44);
-                ll.Remove(33);
-                bool found22 = ll.Contains(22);
-                bool found33 = ll.Contains(33);
-                bool found42 = ll.Contains(42);
-                Console.WriteLine(found22);//true
-                Console.WriteLine(found33);//false
-                Console.WriteLine(found42);//false
-            }
-        }
     }
 }
